@@ -81,7 +81,7 @@ exports.login = async (req, res) => {
                         maxAge: 24 * 60 * 60 * 1000
                     });
 
-                    res.status(200).send({ message: 'Login successful' });
+                    res.status(200).send({ message: 'Login successful', name: user.name, userId: user.UserID });
             } else {
                 return res.status(401).send({
                     accessToken: null,
@@ -145,4 +145,3 @@ exports.logout = (req, res) => {
 
     res.status(200).send({ message: 'Logout successful' });
 };
-
