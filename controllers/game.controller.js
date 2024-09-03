@@ -16,7 +16,7 @@ exports.saveColorGuess = (req, res) => {
     db.query(query, [color, inputColor, accuracy, userID], (err, result) => {
       if (err) {
         console.error('Error while inserting colors:', err);
-        return res.status(500).send('Error while saving colors');
+        return res.status(500).send(err.message);
       }
   
       res.status(201).send(`Colors added with following ID: ${result.insertId}`);
@@ -33,7 +33,6 @@ exports.getHistory = (req, res) => {
           console.error('Error while fetching data ', err);
           return res.status(500).send('Error while fetching data');
        }
- 
        res.json(result);
     });
 } 
