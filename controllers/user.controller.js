@@ -33,7 +33,7 @@ exports.register = async (req, res) => {
         });
      } catch (error) {
         console.error('Internal server error while registering:', error);
-        res.status(500).send('Internal server error occurred');
+        res.status(500).send('Error while registering');
      }
 }
 
@@ -89,11 +89,11 @@ exports.login = async (req, res) => {
                   });
             }
         } else {
-            return res.status(404).send("User doesn't exist");
+            return res.status(404).send("No user existing");
         }
     } catch (error) {
         console.log("Error ", error);
-        res.status(500).send('Internal server error');
+        res.status(500).send('Error while login');
     }
 }
 

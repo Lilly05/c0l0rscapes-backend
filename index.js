@@ -10,12 +10,17 @@ var app = express();
 
 app.use(cookieParser());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true })); 
 
 // CORS
 app.use(cors({
-   origin: 'http://localhost:8080', 
-   credentials: true, 
+  origin: function (origin, callback) {
+    // Return origin in Access-Control-Allow-origin Header that is equal to requesting origin
+    callback(null, origin);
+  },
+  credentials: true,
 }));
+
 
 // Public and private key
 function generateKeyPair() {
